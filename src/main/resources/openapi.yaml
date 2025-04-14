@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Price API
+  version: 1.0.0
+  description: API para consultar precios aplicables a productos en base a fecha, producto y marca
+
+paths:
+  /prices:
+    get:
+      summary: Obtener el precio aplicable
+      parameters:
+        - name: consultationDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          example: "2020-06-14T10:00:00"
+        - name: productId
+          in: query
+          required: true
+          schema:
+            type: integer
+          example: 35455
+        - name: brandId
+          in: query
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: Precio encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceResponse'
+        '404':
+          description: Precio no encontrado
+
+components:
+  schemas:
+    PriceResponse:
+      type: object
+      properties:
+        productId:
+          type: integer
+          example: 35455
+        brandId:
+          type: integer
+          example: 1
+        priceList:
+          type: integer
+          example: 2
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-06-14T15:00:00"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-06-14T18:30:00"
+        price:
+          type: number
+          format: float
+          example: 25.45
+        currency:
+          type: string
+          example: "EUR"
