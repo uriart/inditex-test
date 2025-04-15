@@ -2,7 +2,7 @@ package com.inditex.demo.domain.service;
 
 import com.inditex.demo.domain.exceptions.PriceNotFoundException;
 import com.inditex.demo.domain.model.Price;
-import com.inditex.demo.domain.port.PriceRepositoryPort;
+import com.inditex.demo.domain.ports.PriceRepositoryPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

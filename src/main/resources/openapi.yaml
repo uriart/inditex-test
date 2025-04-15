@@ -1,69 +1,55 @@
 openapi: 3.0.3
 info:
+  description: API para consultar precios aplicables a productos en base a fecha,
+    producto y marca
   title: Price API
   version: 1.0.0
-  description: API para consultar precios aplicables a productos en base a fecha, producto y marca
-
+servers:
+- url: /
 paths:
   /prices:
     get:
-      summary: Obtener el precio aplicable
+      operationId: getPrice
       parameters:
-        - name: consultationDate
-          in: query
-          required: true
-          schema:
-            type: string
-            format: date-time
-          example: "2020-06-14T10:00:00"
-        - name: productId
-          in: query
-          required: true
-          schema:
-            type: integer
-          example: 35455
-        - name: brandId
-          in: query
-          required: true
-          schema:
-            type: integer
-          example: 1
+      - example: 2020-06-14T10:00:00
+        explode: true
+        in: query
+        name: consultationDate
+        required: true
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - example: 35455
+        explode: true
+        in: query
+        name: productId
+        required: true
+        schema:
+          type: integer
+        style: form
+      - example: 1
+        explode: true
+        in: query
+        name: brandId
+        required: true
+        schema:
+          type: integer
+        style: form
       responses:
-        '200':
-          description: Precio encontrado
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PriceResponse'
-        '404':
+                $ref: '#/components/schemas/PriceResponseDto'
+          description: Precio encontrado
+        "404":
           description: Precio no encontrado
-
+      summary: Obtener el precio aplicable
+      x-accepts: application/json
 components:
   schemas:
-    PriceResponse:
-      type: object
-      properties:
-        productId:
-          type: integer
-          example: 35455
-        brandId:
-          type: integer
-          example: 1
-        priceList:
-          type: integer
-          example: 2
-        startDate:
-          type: string
-          format: date-time
-          example: "2020-06-14T15:00:00"
-        endDate:
-          type: string
-          format: date-time
-          example: "2020-06-14T18:30:00"
-        price:
-          type: number
-          format: float
-          example: 25.45
-        currency:
-          type: string
-          example: "EUR"
+    PriceResponseDto:
+      type: PriceResponseDto
+      description: Clase Java existente
+      additionalProperties: false

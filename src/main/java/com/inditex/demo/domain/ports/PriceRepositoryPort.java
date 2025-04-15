@@ -1,4 +1,4 @@
-package com.inditex.demo.domain.port;
+package com.inditex.demo.domain.ports;
 
 import com.inditex.demo.domain.model.Price;
 

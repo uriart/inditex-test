@@ -1,7 +1,7 @@
 package com.inditex.demo.infrastructure.out.persistance;
 
 import com.inditex.demo.domain.model.Price;
-import com.inditex.demo.domain.port.PriceRepositoryPort;
+import com.inditex.demo.domain.ports.PriceRepositoryPort;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

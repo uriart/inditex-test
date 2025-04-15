@@ -4,18 +4,14 @@ import com.inditex.demo.domain.model.Price;
 import com.inditex.demo.domain.service.PriceService;
 import com.inditex.demo.infrastructure.in.rest.dto.PriceResponseDto;
 import com.inditex.demo.infrastructure.in.rest.exceptions.InvalidParametersException;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.openapitools.api.PricesApi;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/prices")
-public class PriceController {
+public class PriceController implements PricesApi {
 
     private final PriceService priceService;
 
@@ -23,12 +19,8 @@ public class PriceController {
         this.priceService = priceService;
     }
 
-    @GetMapping
-    public ResponseEntity<PriceResponseDto> getPrice(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime consultationDate,
-            @RequestParam Integer productId,
-            @RequestParam Integer brandId) {
-
+    @Override
+    public ResponseEntity<Object> getPrice(LocalDateTime consultationDate, Integer productId, Integer brandId) {
         if (consultationDate == null || productId <= 0 || brandId <= 0) {
             throw new InvalidParametersException("Invalid parameters");
         }
@@ -37,5 +29,4 @@ public class PriceController {
 
         return ResponseEntity.ok(new PriceResponseDto(price));
     }
-
 }
