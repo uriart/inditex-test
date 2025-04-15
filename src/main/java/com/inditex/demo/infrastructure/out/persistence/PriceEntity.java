@@ -1,4 +1,4 @@
-package com.inditex.demo.infrastructure.out.persistance;
+package com.inditex.demo.infrastructure.out.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

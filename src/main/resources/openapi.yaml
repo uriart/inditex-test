@@ -45,6 +45,8 @@ paths:
           description: Precio encontrado
         "404":
           description: Precio no encontrado
+        "400":
+          description: Error en los parámetros de entrada
       summary: Obtener el precio aplicable
       x-accepts: application/json
 components:

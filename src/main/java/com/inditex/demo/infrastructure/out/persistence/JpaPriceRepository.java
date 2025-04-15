@@ -1,4 +1,4 @@
-package com.inditex.demo.infrastructure.out.persistance;
+package com.inditex.demo.infrastructure.out.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

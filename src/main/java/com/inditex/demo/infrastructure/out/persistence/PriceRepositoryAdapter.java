@@ -1,4 +1,4 @@
-package com.inditex.demo.infrastructure.out.persistance;
+package com.inditex.demo.infrastructure.out.persistence;
 
 import com.inditex.demo.domain.model.Price;
 import com.inditex.demo.domain.ports.PriceRepositoryPort;

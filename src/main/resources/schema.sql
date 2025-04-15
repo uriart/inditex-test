@@ -7,5 +7,5 @@ CREATE TABLE prices (
     priority INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     curr VARCHAR(3) NOT NULL,
-    PRIMARY KEY (brand_id, price_list, product_id, start_date)
+    PRIMARY KEY (price_list)
 );
