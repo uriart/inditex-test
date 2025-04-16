@@ -20,7 +20,7 @@ public class PriceController implements PricesApi {
     }
 
     @Override
-    public ResponseEntity<Object> getPrice(LocalDateTime consultationDate, Integer productId, Integer brandId) {
+    public ResponseEntity<PriceResponseDto> getPrice(LocalDateTime consultationDate, Integer productId, Integer brandId) {
         if (consultationDate == null || productId <= 0 || brandId <= 0) {
             throw new InvalidParametersException("Invalid parameters");
         }

@@ -44,7 +44,7 @@ class PriceControllerTest {
 
         when(priceService.getApplicablePrice(date, productId, brandId)).thenReturn(price);
 
-        ResponseEntity<Object> response = priceController.getPrice(date, productId, brandId);
+        ResponseEntity<PriceResponseDto> response = priceController.getPrice(date, productId, brandId);
 
         assertEquals(200, response.getStatusCodeValue());
         assertInstanceOf(PriceResponseDto.class, response.getBody());

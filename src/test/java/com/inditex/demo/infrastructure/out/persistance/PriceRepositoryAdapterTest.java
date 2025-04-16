@@ -42,7 +42,7 @@ class PriceRepositoryAdapterTest {
         entity.setPrice(new BigDecimal("25.45"));
         entity.setCurr("EUR");
 
-        when(jpaPriceRepository.findPrice(productId, brandId, now, now)).thenReturn(entity);
+        when(jpaPriceRepository.findPriceByDateProductAndBrand(productId, brandId, now, now)).thenReturn(entity);
 
         Optional<Price> result = priceRepositoryAdapter.findPrice(now, productId, brandId);
 
@@ -61,7 +61,7 @@ class PriceRepositoryAdapterTest {
         int productId = 35455;
         int brandId = 1;
 
-        when(jpaPriceRepository.findPrice(productId, brandId, now, now)).thenReturn(null);
+        when(jpaPriceRepository.findPriceByDateProductAndBrand(productId, brandId, now, now)).thenReturn(null);
         Optional<Price> result = priceRepositoryAdapter.findPrice(now, productId, brandId);
         assertFalse(result.isPresent());
     }

@@ -18,7 +18,7 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
 
     @Override
     public Optional<Price> findPrice(LocalDateTime date, Integer productId, Integer brandId) {
-        return Optional.ofNullable(jpaPriceRepository.findPrice(productId, brandId, date, date))
+        return Optional.ofNullable(jpaPriceRepository.findPriceByDateProductAndBrand(productId, brandId, date, date))
                 .map(this::mapToPrice);
     }
 

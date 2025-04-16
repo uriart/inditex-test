@@ -18,6 +18,6 @@ public interface JpaPriceRepository extends JpaRepository<PriceEntity, Long> {
         ORDER BY p.priority DESC
         LIMIT 1
     """)
-    PriceEntity findPrice(
+    PriceEntity findPriceByDateProductAndBrand(
             Integer productId, Integer brandId, LocalDateTime startDate, LocalDateTime endDate);
 }
